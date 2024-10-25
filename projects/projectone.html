@@ -37,15 +37,13 @@
 								<header class="major">
 									<h2>Project Overview</h2>
 								</header>
-								<p>Manpower Recruitment Firm (imaginary company) is a recruitment company which offers applicants to their client companies.
+								<h5>Manpower Recruitment Firm (imaginary company) is a recruitment company which offers applicants to their client companies.
 									The new data admin has noticed the company's out-of-date operations and introduced changes such as data cleaning and
-									data visualization to utilize data in order to generate informed decisions for the company's benefit.
-								</p>
-								<p>Leading the initiative, the new data admin is tasked to create a dashboard. With the given applicant data covering the last
+									data visualization to utilize data in order to generate informed decisions for the company's benefit.</h5>
+								<h5>Leading the initiative, the new data admin is tasked to create a dashboard. With the given applicant data covering the last
 									six months, the project aims to evaluate <strong>firm</strong> and <strong>recruiter performance</strong> based on the
 									<strong>success rates</strong> of applicants with a focus on key metrics such as <strong>applicant experience levels, education,</strong> 
-									and <strong>regional effectiveness</strong>.
-								</p>
+									and <strong>regional effectiveness</strong>.</h5>
 							</section>
 
 							<section id="datacleaning" class="main">
@@ -55,116 +53,114 @@
 
 									<h3>A. Handling Blank Spaces</h3>
 										<ul>
-											<li>Select all cells in the table <strong>(CTRL + A)</strong>.</li>
-											<li>Navigate from <strong>Home</strong> > <strong>Find & Select</strong> > <strong>Go To Special</strong> > <strong>Blank Cells</strong>.</li>
-											<li>On the <strong>formula bar</strong>, enter the text <code>NA</code>.</li>
-											<li>Click <strong>CTRL + ENTER</strong>.</li>
+											<li><h5>Select all cells in the table <strong>(CTRL + A)</strong>.</h5></li>
+											<li><h5>Navigate from <strong>Home</strong> > <strong>Find & Select</strong> > <strong>Go To Special</strong> > <strong>Blank Cells</strong>.</h5></li>
+											<li><h5>On the <strong>formula bar</strong>, enter the text <code>NA</code>.</h5></li>
+											<li><h5>Click <strong>CTRL + ENTER</strong>.</h5></li>
 										</ul>
 
 									<br>
 									<h3>B. Adding The Field "Age Range"</h3>
-										<p>This field is added to provide a range, which allows to easily group applicants based on age.
-											With added interpretation per range, the data could be easily visualized.
-										</p>
+										<h5>This field is added to provide a range, which allows to easily group applicants based on age.
+											With added interpretation per range, the data could be easily visualized.</h5>
+										<br>
 										<div class="table-wrapper">
 											<table>
 												<thead>
 													<tr>
-														<th>Age Range</th>
-														<th>Verbal Interpretation</th>
+														<th><h5><strong>Age Range</strong></h5></th>
+														<th><h5><strong>Verbal Interpretation</strong></h5></th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td>55+</td>
-														<td>Old</td>
+														<td><h5>55+</h5></td>
+														<td><h5>Old</h5></td>
 													</tr>
 													<tr>
-														<td>31 - 54</td>
-														<td>Middle Age</td>
+														<td><h5>31 - 54</h5></td>
+														<td><h5>Middle Age</h5></td>
 													</tr>
 													<tr>
-														<td>0 - 30</td>
-														<td>Adolescent</td>
+														<td><h5>0 - 30</h5></td>
+														<td><h5>Adolescent</h5></td>
 													</tr>
 												</tbody>
 											</table>
 										</div>
-										<p>Here's the formula in Excel
+										<h5>Here's the formula in Excel
 											<code>
 												=IF([@Age] &ge; 55, "Old", IF([@Age] &ge; 31, "Middle Age", IF([@Age] &lt; 31, "Adolescent", "Invalid")))
-											</code>.
-										</p>
+											</code>.</h5>
 									
 									<br>
 									<h3>C. Adding The Field "Province/City"</h3>
-									<p>Based on the objectives, regional effectiveness is one of the key metrics to determine
+									<h5>Based on the objectives, regional effectiveness is one of the key metrics to determine
 										success rates. The data admin discovered that the field <strong>Full Address</strong> contained
-										messy data. With this, the data admin came up with the following solutions:</p>
+										messy data. With this, the data admin came up with the following solutions:</h5>
 										<ul>
-											<li>Use conditional formatting. </li>
-											<br>
-											<p style="text-indent: 50px;"> Here's a sample data from the field <strong>Full Address</strong>: <code>Brgy 123 Zone 7 Hills Cainta Rizal</code></p>
-											<p style="text-indent: 50px;"><strong>Rizal</strong> is a province. Before populating the field <strong>Province/City</strong>, conditional formatting is used
-												to highlight records based on a defined condition. For this case, records/rows containing the word <strong>Rizal</strong> is highlighted.</p>
-											<p style="text-indent: 50px;"><strong>Conditional Formatting</strong> > <strong>Highlight Cells Rules</strong> > <strong>Text that Contains...</strong> > Enter the province or city
-											</p>
+											<li><h5>Use conditional formatting.</h5> </li>
+											<h5>Here's a sample data from the field <strong>Full Address</strong>: <code>Brgy 123 Zone 7 Hills Cainta Rizal</code></h5>
+											<h5><strong>Rizal</strong> is a province. Before populating the field <strong>Province/City</strong>, conditional formatting is used
+												to highlight records based on a defined condition. For this case, records/rows containing the word <strong>Rizal</strong> is highlighted.</h5>
+											<h5><strong>Conditional Formatting</strong> > <strong>Highlight Cells Rules</strong> > <strong>Text that Contains...</strong> > Enter the province or city
+											</h5>
 
-											<li>Sort by color all the data from field <strong>Full Address</strong> before populating the field <strong>Province/City</strong>.</li>
+											<li><h5>Sort by color all the data from field <strong>Full Address</strong> before populating the field <strong>Province/City</strong>.</h5></li>
 										</ul>
 
 									<br>
 									<h3>D. Adding The Field "Region Group"</h3>
 									<ul>
-										<li>Create a new table with two fields <strong>Province/City</strong> and <strong>Region Group</strong>. This table is named <strong>Place</strong>.</li>
-										<li>To populate the field <strong>Region Group</strong>, this formula is used <code>=VLOOKUP([@[Province/City]], Place, 2, FALSE)</code>. This formula searches
-											 the look-up value <code>[@[Province/City]]</code> on the table <strong>Place</strong> and returns an exact value from the specified column <strong>2</strong> of
-											 the same row.
+										<li><h5>Create a new table with two fields <strong>Province/City</strong> and <strong>Region Group</strong>. This table is named <strong>Place</strong>.</h5></li>
+										<li><h5>To populate the field <strong>Region Group</strong>, this formula is used <code>=VLOOKUP([@[Province/City]], Place, 2, FALSE)</code>. This formula searches
+											the look-up value <code>[@[Province/City]]</code> on the table <strong>Place</strong> and returns an exact value from the specified column <strong>2</strong> of
+											the same row.</h5>
 										</li>
 									</ul>
 
 									<br>
 									<h3>E. Adding The Field "Status"</h3>
-									<p>The field <strong>Remarks</strong> is composed of messy data. With this, the data admin decided to add another field named <strong>Status</strong>.
-									The five applicant statuses are <strong>Passed, Failed, New, Pending</strong> and <strong>Withdrawn</strong>.
-									</p>
-									<p>Here's the formula in Excel: 
-<pre><code>=IF([@Remarks]="Passed", "Passed", IF([@Remarks]="New Endorsement", "New", IF([@Remarks]="Ready for Interview", "Pending", IF([@Remarks]="Pending", "Pending", IF([@Remarks]="Withdrawn", "Withdrawn", IF([@Remarks]="Invalid", "Withdrawn", "Failed"))))))</code></pre></p>
+									<h5>The field <strong>Remarks</strong> is composed of messy data. With this, the data admin decided to add another field named <strong>Status</strong>.
+										The five applicant statuses are <strong>Passed, Failed, New, Pending</strong> and <strong>Withdrawn</strong>.</h5>
+									<h5>Here's the formula in Excel: 
+<pre><code>=IF([@Remarks]="Passed", "Passed", IF([@Remarks]="New Endorsement", "New", IF([@Remarks]="Ready for Interview", "Pending", IF([@Remarks]="Pending", "Pending", IF([@Remarks]="Withdrawn", "Withdrawn", IF([@Remarks]="Invalid", "Withdrawn", "Failed"))))))</code></pre></h5>
 
 									<br>
 									<h3>F. Adding The Field "Experience Range"</h3>
-									<p>To efficiently visualize the data, the field <strong>Experience Range</strong> is added. It provided a range and interpretation that helps in grouping applicants
-									based on their years of work experience.</p>
+									<h5>To efficiently visualize the data, the field <strong>Experience Range</strong> is added. It provided a range and interpretation that helps in grouping applicants
+										based on their years of work experience.</h5>
+										<br>
 									<div class="table-wrapper">
 										<table>
 											<thead>
 												<tr>
-													<th>Experience Range</th>
-													<th>Interpretation</th>
+													<th><h5><strong>Experience Range</strong></h5></th>
+													<th><h5><strong>Interpretation</strong></h5></th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
-													<td>109+ Months</td>
-													<td>9 Years+</td>
+													<td><h5>109+ Months</h5></td>
+													<td><h5>9 Years+</h5></td>
 												</tr>
 												<tr>
-													<td>49 - 108 Months</td>
-													<td>4 - 8 Years</td>
+													<td><h5>49 - 108 Months</h5></td>
+													<td><h5>4 - 8 Years</h5></td>
 												</tr>
 												<tr>
-													<td>12 - 48 Months</td>
-													<td>1 - 4 Years</td>
+													<td><h5>12 - 48 Months</h5></td>
+													<td><h5>1 - 4 Years</h5></td>
 												</tr>
 												<tr>
-													<td>0 - 12 Months</td>
-													<td>0 - 1 Years</td>
+													<td><h5>0 - 12 Months</h5></td>
+													<td><h5>0 - 1 Years</h5></td>
 												</tr>
 											</tbody>
 										</table>
 									</div>
-									<p>Here's the formula in Excel:
-<pre><code>=IF([@[Total Experience]]>=109, "9 Years+", IF([@[Total Experience]]>=49, "4-8 Years", IF([@[Total Experience]]>12, "1-4 Years", "0-1 Years")))</code></pre></p>
+									<h5>Here's the formula in Excel:
+<pre><code>=IF([@[Total Experience]]>=109, "9 Years+", IF([@[Total Experience]]>=49, "4-8 Years", IF([@[Total Experience]]>12, "1-4 Years", "0-1 Years")))</code></pre></h5>
 
 							</section>
 							
@@ -172,91 +168,92 @@
 								<header class="major">
 									<h2>Dataset Description</h2>
 								</header>
-								<p>After the process of data cleaning, the dataset totaled into 3448 rows, 18 columns, and 0 missing
-									value. Below are the fields and its descriptions:</p>
+								<h5>After the process of data cleaning, the dataset totaled into 3448 rows, 18 columns, and 0 missing
+									value. Below are the fields and its descriptions:</h5>
+									<br>
 									<div class="table-wrapper">
 										<table>
 											<thead>
 												<tr>
-													<th>Field/Column</th>
-													<th>Description</th>
+													<th><h5><strong>Field/Column</strong></h5></th>
+													<th><h5><strong>Description</strong></h5></th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
-													<td>Last Name</td>
-													<td>Demographic variable &dash; Applicant&apos;s last name</td>
+													<td><h5>Last Name</h5></td>
+													<td><h5>Demographic variable &dash; Applicant&apos;s last name</h5></td>
 												</tr>
 												<tr>
-													<td>First Name</td>
-													<td>Demographic variable &dash; Applicant&apos;s first name</td>
+													<td><h5>First Name</h5></td>
+													<td><h5>Demographic variable &dash; Applicant&apos;s first name</h5></td>
 												</tr>
 												<tr>
-													<td>Middle Name</td>
-													<td>Demographic variable &dash; Applicant&apos;s middle name</td>
+													<td><h5>Middle Name</h5></td>
+													<td><h5>Demographic variable &dash; Applicant&apos;s middle name</h5></td>
 												</tr>
 												<tr>
-													<td>Age</td>
-													<td>Demographic variable &dash; Applicant&apos;s age in years</td>
+													<td><h5>Age</h5></td>
+													<td><h5>Demographic variable &dash; Applicant&apos;s age in years</h5></td>
 												</tr>
 												<tr>
-													<td>Age Range</td>
-													<td>Demographic variable &dash; Age range of applicant <i>(Adolescent, Middle Age, Old)</i></td>
+													<td><h5>Age Range</h5></td>
+													<td><h5>Demographic variable &dash; Age range of applicant <i>(Adolescent, Middle Age, Old)</i></h5></td>
 												</tr>
 												<tr>
-													<td>Civil Status</td>
-													<td>Demographic variable &dash; Single, Married, Separated, Widowed</td>
+													<td><h5>Civil Status</h5></td>
+													<td><h5>Demographic variable &dash; Single, Married, Separated, Widowed</h5></td>
 												</tr>
 												<tr>
-													<td>Sex</td>
-													<td>Demographic variable &dash; Male, Female</td>
+													<td><h5>Sex</h5></td>
+													<td><h5>Demographic variable &dash; Male, Female</h5></td>
 												</tr>
 												<tr>
-													<td>Full Address</td>
-													<td>Demographic variable &dash; Applicant&apos;s full Address</td>
+													<td><h5>Full Address</h5></td>
+													<td><h5>Demographic variable &dash; Applicant&apos;s full Address</h5></td>
 												</tr>
 												<tr>
-													<td>Province/City</td>
-													<td>Demographic variable &dash; Province or city of applicant</td>
+													<td><h5>Province/City</h5></td>
+													<td><h5>Demographic variable &dash; Province or city of applicant</h5></td>
 												</tr>
 												<tr>
-													<td>Region Group</td>
-													<td>Demographic variable &dash; Region of applicant <i>(NCR, Luzon, Vizayas, Mindanao)</i></td>
+													<td><h5>Region Group</h5></td>
+													<td><h5>Demographic variable &dash; Region of applicant <i>(NCR, Luzon, Vizayas, Mindanao)</i></h5></td>
 												</tr>
 												<tr>
-													<td>Remarks</td>
-													<td>Demographic variable &dash; Remarks about the applicant during interview</td>
+													<td><h5>Remarks</h5></td>
+													<td><h5>Demographic variable &dash; Remarks about the applicant during interview</h5></td>
 												</tr>
 												<tr>
-													<td>Status</td>
-													<td>Demographic variable &dash; Recruitment status of applicant <i>(Passed, Failed, New, Pending, Withdrawn)</i></td>
+													<td><h5>Status</h5></td>
+													<td><h5>Demographic variable &dash; Recruitment status of applicant <i>(Passed, Failed, New, Pending, Withdrawn)</i></h5></td>
 												</tr>
 												<tr>
-													<td>Education</td>
-													<td>Demographic variable &dash; Educational qualification of the applicant <i>(High School Graduate (Old Curriculum), High School Graduate, Senior High
+													<td><h5>Education</h5></td>
+													<td><h5>Demographic variable &dash; Educational qualification of the applicant <i>(High School Graduate (Old Curriculum), High School Graduate, Senior High
 														School Graduate, 1st Year College (Undergraduate), 2nd Year College (Undergraduate), 3rd Year College (Undergraduate), 4th Year College
-														(Undergraduate), ALS Graduate, Associate Graduate, College Graduate, Masteral Degree, Vocational (Undergraduate), Vocational Graduate)</i></td>
+														(Undergraduate), ALS Graduate, Associate Graduate, College Graduate, Masteral Degree, Vocational (Undergraduate), Vocational Graduate)</i></h5></td>
 												</tr>
 												<tr>
-													<td>Total Experience</td>
-													<td>Demographic variable &dash; Applicant&apos;s total experience in months</td>
+													<td><h5>Total Experience</h5></td>
+													<td><h5>Demographic variable &dash; Applicant&apos;s total experience in months</h5></td>
 												</tr>
 												<tr>
-													<td>Experience Range</td>
-													<td>Demographic variable &dash; Experience range of the applicant <i>(0 &dash; 1 Years, 1
-														&dash; 4 Years, 4 &dash; 8 Years, 9 Years+)</i></td>
+													<td><h5>Experience Range</h5></td>
+													<td><h5>Demographic variable &dash; Experience range of the applicant <i>(0 &dash; 1 Years, 1
+														&dash; 4 Years, 4 &dash; 8 Years, 9 Years+)</i></h5></td>
 												</tr>
 												<tr>
-													<td>Recruiter</td>
-													<td>Name of human resource or recruiter</td>
+													<td><h5>Recruiter</h5></td>
+													<td><h5>Name of human resource or recruiter</h5></td>
 												</tr>
 												<tr>
-													<td>Client</td>
-													<td>Name of the client bank company <i>(BankPH, IslandBank, Northbank, PhilBank, Southbank)</i></td>
+													<td><h5>Client</h5></td>
+													<td><h5>Name of the client bank company <i>(BankPH, IslandBank, Northbank, PhilBank, Southbank)</i></h5></td>
 												</tr>
 												<tr>
-													<td>Month</td>
-													<td>Demographic variable &dash; Applicant&apos;s month of interview</td>
+													<td><h5>Month</h5></td>
+													<td><h5>Demographic variable &dash; Applicant&apos;s month of interview</h5></td>
 												</tr>
 											</tbody>
 										</table>
@@ -281,13 +278,12 @@
 									</div>
 								  </div>
 								</div>
-								<p>The dashboards show the tally of applicants and recruitment success rates in National 
+								<h5>The dashboards show the tally of applicants and recruitment success rates in National 
 									Capital Region (NCR) and Mindanao <i>(From Left to Right)</i>. Disparity on the number of
 									applicants is shown, with the number of applicants from Mindanao being significantly lower as 
-									compared to the applicants from NCR.
-								</p>
+									compared to the applicants from NCR.</h5>
 
-								<br>
+								<br><br>
 								<div class="box alt">
 									<div class="row gtr-uniform">
 									  <div class="col-6 image-container" onclick="openFullscreen('../pics/P1/3.PNG')">
@@ -298,10 +294,10 @@
 									  </div>
 									</div>
 								  </div>
-								<p>The dashboards show the client companies BankPH and Northbank having the highest and lowest 
+								<h5>The dashboards show the client companies BankPH and Northbank having the highest and lowest 
 									success rates, respectively <i>(From Left to Right)</i>. For the last 6 months, 2nd Year 
 									Undergraduates and Graduates have been acquired by BankPH. Applicants who have one year to no
-									experience have also been considered by BankPH. </p>
+									experience have also been considered by BankPH.</h5>
 							  </section>
 							  
 					</div>
@@ -310,8 +306,8 @@
 				<footer id="footer">
 					<section id="blogs">
 						<h2>Blogs</h2>
-						<p>Read random and technical stuffs on my account!
-						</p>
+						<h5>Read random and technical stuffs on my account!</h5>
+						<br>
 						<ul class="actions">
 							<li><a href="https://medium.com/@riakbmabansag" class="button small icon solid brands fa-medium">Visit My Medium Account</a></li>
 						</ul>
@@ -319,18 +315,18 @@
 					<section>
 						<h2>Contact</h2>
 						<dl class="alt">
-							<dt>Address</dt>
-							<dd>Binangonan Rizal 1940 Philippines</dd>
-							<dt>Email</dt>
-							<dd><a href="mailto:riakbmabansag@gmail.com" target="_blank">riakbmabansag@gmail.com</a></dd>
+							<dt><h5>Address</h5></dt>
+							<dd><h5>Binangonan Rizal 1940 Philippines</h5></dd>
+							<dt><h5>Email</h5></dt>
+							<dd><a href="mailto:riakbmabansag@gmail.com" target="_blank"><h5>riakbmabansag@gmail.com</h5></a></dd>
 						</dl>
 						<ul class="icons">
-							<li><a href="https://web.facebook.com/karen.benitezmabansag/" target="_blank" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-							<li><a href="https://github.com/riavx" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-							<li><a href="https://www.linkedin.com/in/ria-karen-mabansag-a00b29259/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://web.facebook.com/karen.benitezmabansag/" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://github.com/riavx" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/ria-karen-mabansag-a00b29259/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 						</ul>
 					</section>
-					<p class="copyright">&copy; Rianalyst 2024</p>
+					<p class="copyright">&copy; RIANALYST 2024</p>
 				</footer>
 
 				<!-- Fullscreen Overlay -->
