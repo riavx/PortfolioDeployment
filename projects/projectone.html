@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Rianalyst | Recruitee Dashboard</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Recruitee Dashboard</h1>
+						<p>Data Cleaning & Visualization Using MS Excel</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#projectoverview" class="active">Project Overview</a></li>
+								<li><a href="#datacleaning">Data Cleaning</a></li>
+								<li><a href="#datasetdesc">Dataset Description</a></li>
+								<li><a href="#datavisualization">Data Visualization</a></li>
+							</ul>
+						</nav>
+
+						<!-- Content -->
+							<section id="projectoverview" class="main">
+								<header class="major">
+									<h2>Project Overview</h2>
+								</header>
+								<p>Manpower Recruitment Firm (imaginary company) is a recruitment company which offers applicants to their client companies.
+									The new data admin has noticed the company's out-of-date operations and introduced changes such as data cleaning and
+									data visualization to utilize data in order to generate informed decisions for the company's benefit.
+								</p>
+								<p>Leading the initiative, the new data admin is tasked to create a dashboard. With the given applicant data covering the last
+									six months, the project aims to evaluate <strong>firm</strong> and <strong>recruiter performance</strong> based on the
+									<strong>success rates</strong> of applicants with a focus on key metrics such as <strong>applicant experience levels, education,</strong> 
+									and <strong>regional effectiveness</strong>.
+								</p>
+							</section>
+
+							<section id="datacleaning" class="main">
+								<header class="major">
+									<h2>Data Cleaning</h2>
+								</header>
+
+									<h3>A. Handling Blank Spaces</h3>
+										<ul>
+											<li>Select all cells in the table <strong>(CTRL + A)</strong>.</li>
+											<li>Navigate from <strong>Home</strong> > <strong>Find & Select</strong> > <strong>Go To Special</strong> > <strong>Blank Cells</strong>.</li>
+											<li>On the <strong>formula bar</strong>, enter the text <code>NA</code>.</li>
+											<li>Click <strong>CTRL + ENTER</strong>.</li>
+										</ul>
+
+									<br>
+									<h3>B. Adding The Field "Age Range"</h3>
+										<p>This field is added to provide a range, which allows to easily group applicants based on age.
+											With added interpretation per range, the data could be easily visualized.
+										</p>
+										<div class="table-wrapper">
+											<table>
+												<thead>
+													<tr>
+														<th>Age Range</th>
+														<th>Verbal Interpretation</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>55+</td>
+														<td>Old</td>
+													</tr>
+													<tr>
+														<td>31 - 54</td>
+														<td>Middle Age</td>
+													</tr>
+													<tr>
+														<td>0 - 30</td>
+														<td>Adolescent</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<p>Here's the formula in Excel
+											<code>
+												=IF([@Age] &ge; 55, "Old", IF([@Age] &ge; 31, "Middle Age", IF([@Age] &lt; 31, "Adolescent", "Invalid")))
+											</code>.
+										</p>
+									
+									<br>
+									<h3>C. Adding The Field "Province/City"</h3>
+									<p>Based on the objectives, regional effectiveness is one of the key metrics to determine
+										success rates. The data admin discovered that the field <strong>Full Address</strong> contained
+										messy data. With this, the data admin came up with the following solutions:</p>
+										<ul>
+											<li>Use conditional formatting. </li>
+											<br>
+											<p style="text-indent: 50px;"> Here's a sample data from the field <strong>Full Address</strong>: <code>Brgy 123 Zone 7 Hills Cainta Rizal</code></p>
+											<p style="text-indent: 50px;"><strong>Rizal</strong> is a province. Before populating the field <strong>Province/City</strong>, conditional formatting is used
+												to highlight records based on a defined condition. For this case, records/rows containing the word <strong>Rizal</strong> is highlighted.</p>
+											<p style="text-indent: 50px;"><strong>Conditional Formatting</strong> > <strong>Highlight Cells Rules</strong> > <strong>Text that Contains...</strong> > Enter the province or city
+											</p>
+
+											<li>Sort by color all the data from field <strong>Full Address</strong> before populating the field <strong>Province/City</strong>.</li>
+										</ul>
+
+									<br>
+									<h3>D. Adding The Field "Region Group"</h3>
+									<ul>
+										<li>Create a new table with two fields <strong>Province/City</strong> and <strong>Region Group</strong>. This table is named <strong>Place</strong>.</li>
+										<li>To populate the field <strong>Region Group</strong>, this formula is used <code>=VLOOKUP([@[Province/City]], Place, 2, FALSE)</code>. This formula searches
+											 the look-up value <code>[@[Province/City]]</code> on the table <strong>Place</strong> and returns an exact value from the specified column <strong>2</strong> of
+											 the same row.
+										</li>
+									</ul>
+
+									<br>
+									<h3>E. Adding The Field "Status"</h3>
+									<p>The field <strong>Remarks</strong> is composed of messy data. With this, the data admin decided to add another field named <strong>Status</strong>.
+									The five applicant statuses are <strong>Passed, Failed, New, Pending</strong> and <strong>Withdrawn</strong>.
+									</p>
+									<p>Here's the formula in Excel: 
+<pre><code>=IF([@Remarks]="Passed", "Passed", IF([@Remarks]="New Endorsement", "New", IF([@Remarks]="Ready for Interview", "Pending", IF([@Remarks]="Pending", "Pending", IF([@Remarks]="Withdrawn", "Withdrawn", IF([@Remarks]="Invalid", "Withdrawn", "Failed"))))))</code></pre></p>
+
+									<br>
+									<h3>F. Adding The Field "Experience Range"</h3>
+									<p>To efficiently visualize the data, the field <strong>Experience Range</strong> is added. It provided a range and interpretation that helps in grouping applicants
+									based on their years of work experience.</p>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Experience Range</th>
+													<th>Interpretation</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>109+ Months</td>
+													<td>9 Years+</td>
+												</tr>
+												<tr>
+													<td>49 - 108 Months</td>
+													<td>4 - 8 Years</td>
+												</tr>
+												<tr>
+													<td>12 - 48 Months</td>
+													<td>1 - 4 Years</td>
+												</tr>
+												<tr>
+													<td>0 - 12 Months</td>
+													<td>0 - 1 Years</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<p>Here's the formula in Excel:
+<pre><code>=IF([@[Total Experience]]>=109, "9 Years+", IF([@[Total Experience]]>=49, "4-8 Years", IF([@[Total Experience]]>12, "1-4 Years", "0-1 Years")))</code></pre></p>
+
+							</section>
+							
+							<section id="datasetdesc" class="main">
+								<header class="major">
+									<h2>Dataset Description</h2>
+								</header>
+								<p>After the process of data cleaning, the dataset totaled into 3448 rows, 18 columns, and 0 missing
+									value. Below are the fields and its descriptions:</p>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Field/Column</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Last Name</td>
+													<td>Demographic variable &dash; Applicant&apos;s last name</td>
+												</tr>
+												<tr>
+													<td>First Name</td>
+													<td>Demographic variable &dash; Applicant&apos;s first name</td>
+												</tr>
+												<tr>
+													<td>Middle Name</td>
+													<td>Demographic variable &dash; Applicant&apos;s middle name</td>
+												</tr>
+												<tr>
+													<td>Age</td>
+													<td>Demographic variable &dash; Applicant&apos;s age in years</td>
+												</tr>
+												<tr>
+													<td>Age Range</td>
+													<td>Demographic variable &dash; Age range of applicant <i>(Adolescent, Middle Age, Old)</i></td>
+												</tr>
+												<tr>
+													<td>Civil Status</td>
+													<td>Demographic variable &dash; Single, Married, Separated, Widowed</td>
+												</tr>
+												<tr>
+													<td>Sex</td>
+													<td>Demographic variable &dash; Male, Female</td>
+												</tr>
+												<tr>
+													<td>Full Address</td>
+													<td>Demographic variable &dash; Applicant&apos;s full Address</td>
+												</tr>
+												<tr>
+													<td>Province/City</td>
+													<td>Demographic variable &dash; Province or city of applicant</td>
+												</tr>
+												<tr>
+													<td>Region Group</td>
+													<td>Demographic variable &dash; Region of applicant <i>(NCR, Luzon, Vizayas, Mindanao)</i></td>
+												</tr>
+												<tr>
+													<td>Remarks</td>
+													<td>Demographic variable &dash; Remarks about the applicant during interview</td>
+												</tr>
+												<tr>
+													<td>Status</td>
+													<td>Demographic variable &dash; Recruitment status of applicant <i>(Passed, Failed, New, Pending, Withdrawn)</i></td>
+												</tr>
+												<tr>
+													<td>Education</td>
+													<td>Demographic variable &dash; Educational qualification of the applicant <i>(High School Graduate (Old Curriculum), High School Graduate, Senior High
+														School Graduate, 1st Year College (Undergraduate), 2nd Year College (Undergraduate), 3rd Year College (Undergraduate), 4th Year College
+														(Undergraduate), ALS Graduate, Associate Graduate, College Graduate, Masteral Degree, Vocational (Undergraduate), Vocational Graduate)</i></td>
+												</tr>
+												<tr>
+													<td>Total Experience</td>
+													<td>Demographic variable &dash; Applicant&apos;s total experience in months</td>
+												</tr>
+												<tr>
+													<td>Experience Range</td>
+													<td>Demographic variable &dash; Experience range of the applicant <i>(0 &dash; 1 Years, 1
+														&dash; 4 Years, 4 &dash; 8 Years, 9 Years+)</i></td>
+												</tr>
+												<tr>
+													<td>Recruiter</td>
+													<td>Name of human resource or recruiter</td>
+												</tr>
+												<tr>
+													<td>Client</td>
+													<td>Name of the client bank company <i>(BankPH, IslandBank, Northbank, PhilBank, Southbank)</i></td>
+												</tr>
+												<tr>
+													<td>Month</td>
+													<td>Demographic variable &dash; Applicant&apos;s month of interview</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+							</section>
+
+							<section id="datavisualization" class="main">
+								<header class="major">
+								  <h2>Data Visualization</h2>
+								</header>
+
+								<h6><i>(Click images to zoom in)</i></h6>
+
+								<br>
+								<div class="box alt">
+								  <div class="row gtr-uniform">
+									<div class="col-6 image-container" onclick="openFullscreen('../pics/P1/1.PNG')">
+									  <span class="image fit"><img src="../pics/P1/1.PNG" alt="" /></span>
+									</div>
+									<div class="col-6 image-container" onclick="openFullscreen('../pics/P1/2.PNG')">
+									  <span class="image fit"><img src="../pics/P1/2.PNG" alt="" /></span>
+									</div>
+								  </div>
+								</div>
+								<p>The dashboards show the tally of applicants and recruitment success rates in National 
+									Capital Region (NCR) and Mindanao <i>(From Left to Right)</i>. Disparity on the number of
+									applicants is shown, with the number of applicants from Mindanao being significantly lower as 
+									compared to the applicants from NCR.
+								</p>
+
+								<br>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+									  <div class="col-6 image-container" onclick="openFullscreen('../pics/P1/3.PNG')">
+										<span class="image fit"><img src="../pics/P1/3.PNG" alt="" /></span>
+									  </div>
+									  <div class="col-6 image-container" onclick="openFullscreen('../pics/P1/4.PNG')">
+										<span class="image fit"><img src="../pics/P1/4.PNG" alt="" /></span>
+									  </div>
+									</div>
+								  </div>
+								<p>The dashboards show the client companies BankPH and Northbank having the highest and lowest 
+									success rates, respectively <i>(From Left to Right)</i>. For the last 6 months, 2nd Year 
+									Undergraduates and Graduates have been acquired by BankPH. Applicants who have one year to no
+									experience have also been considered by BankPH. </p>
+							  </section>
+							  
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<section id="blogs">
+						<h2>Blogs</h2>
+						<p>Read random and technical stuffs on my account!
+						</p>
+						<ul class="actions">
+							<li><a href="https://medium.com/@riakbmabansag" class="button small icon solid brands fa-medium">Visit My Medium Account</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Contact</h2>
+						<dl class="alt">
+							<dt>Address</dt>
+							<dd>Binangonan Rizal 1940 Philippines</dd>
+							<dt>Email</dt>
+							<dd><a href="mailto:riakbmabansag@gmail.com" target="_blank">riakbmabansag@gmail.com</a></dd>
+						</dl>
+						<ul class="icons">
+							<li><a href="https://web.facebook.com/karen.benitezmabansag/" target="_blank" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+							<li><a href="https://github.com/riavx" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/ria-karen-mabansag-a00b29259/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+						</ul>
+					</section>
+					<p class="copyright">&copy; Rianalyst 2024</p>
+				</footer>
+
+				<!-- Fullscreen Overlay -->
+				<div id="fullscreenOverlay" class="fullscreen-overlay">
+					<img src="" alt="Fullscreen Image" />
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
